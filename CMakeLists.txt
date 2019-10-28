@@ -100,6 +100,10 @@ INCLUDE_DIRECTORIES(BEFORE ${PROJECT_SOURCE_DIR})
 INCLUDE_DIRECTORIES(SYSTEM ${SDL2_ALL_INCLUDE_DIRS})
 
 INCLUDE(CheckCompile)
+check_cxx_source_compiles(
+	"#include <optional>\nint main() { std::optional<int> o; return !o; }"
+	SDL2PP_WITH_STD_OPTIONAL
+)
 CHECK_COMPILE(
 	SDL2PP_WITH_EXPERIMENTAL_OPTIONAL
 	"#include <experimental/optional>\nint main() { std::experimental::optional<int> o; return !o; }"
